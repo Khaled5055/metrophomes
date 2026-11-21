@@ -90,12 +90,51 @@
       flex-shrink: 0;
     }
 
-    .brand img {
-      height: 54px;
-      width: auto;
-      max-width: 185px;
-      object-fit: contain;
-      display: block;
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: #e5c479;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      border: 1px solid rgba(184, 139, 40, 0.45);
+      flex-shrink: 0;
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-name {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    body[dir="rtl"] .brand-name {
+      font-family: "Amiri", "Cairo", serif;
+      font-size: 1.3rem;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    body[dir="rtl"] .brand-sub {
+      letter-spacing: 0;
+      font-size: 0.76rem;
     }
 
     .brand-divider {
@@ -120,21 +159,22 @@
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 20px;
+      gap: 18px;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--ink);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       transition: color 0.2s ease;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -147,6 +187,7 @@
       border-radius: 6px;
       overflow: hidden;
       background: var(--surface);
+      flex-shrink: 0;
     }
 
     .lang-btn {
@@ -475,29 +516,8 @@
       box-shadow: 0 12px 24px -16px rgba(15, 28, 46, 0.2);
     }
 
-    .service-card {
-      padding: 0;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-media {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #e2e8f0;
-    }
-
-    .service-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
     .service-body {
-      padding: 24px 26px 28px;
+      padding: 4px 0 0;
     }
 
     .card-num {
@@ -689,4 +709,386 @@
   <header>
     <div class="container nav">
       <a href="#home-section" class="brand" aria-label="Metropolis Homes Real Estate">
-        <img src="data:image/png;base64,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
+        <span class="brand-mark" aria-hidden="true">MH</span>
+        <span class="brand-title-wrap">
+          <span class="brand-name" data-i18n="brand_name">Metropolis Homes</span>
+          <span class="brand-sub" data-i18n="brand_sub">Real Estate · Egypt</span>
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-tagline" data-i18n="tagline">Communication · Trust · High Returns</span>
+      </a>
+
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#about-section" data-i18n="nav_about">About</a></li>
+          <li><a href="#services-section" data-i18n="nav_services">Services</a></li>
+          <li><a href="#why-section" data-i18n="nav_why">Why Us</a></li>
+          <li><a href="#contact-section" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <div class="lang-switch" role="group" aria-label="Language switcher">
+          <button type="button" class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-ar" onclick="setLang('ar')">العربية</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home-section">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow" data-i18n="hero_eyebrow">Metropolis Homes Real Estate · metrophomes.com</span>
+          <h1 data-i18n="hero_title">Strategic Real Estate Advisory &amp; High-Value Properties in Egypt</h1>
+          <p data-i18n="hero_desc">We specialize in primary developments, curated resale opportunities, commercial real estate consultancy, and end-to-end property management—built on transparent communication, lasting trust, and sustainable returns.</p>
+          <div class="hero-actions">
+            <a href="#contact-section" class="btn btn-accent" data-i18n="cta_consult">Request Consultation</a>
+            <a href="https://www.facebook.com/MetropolisHomeEG/" target="_blank" rel="noopener noreferrer" class="btn btn-fb" data-i18n="cta_fb">Visit Facebook Page</a>
+            <a href="#services-section" class="btn btn-outline" data-i18n="cta_services">Explore Services</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Core Real Estate Focus">
+          <span class="hero-panel-label" data-i18n="panel_label">Core Focus Across Egypt</span>
+          <ul class="markets-list">
+            <li>
+              <strong data-i18n="m1_title">Residential &amp; Luxury Resale</strong>
+              <span data-i18n="m1_desc">Prime villas, townhouses, apartments, and coastal homes in top compounds.</span>
+            </li>
+            <li>
+              <strong data-i18n="m2_title">Primary Market Developments</strong>
+              <span data-i18n="m2_desc">Direct access to leading developers, payment plans, and high-growth corridors.</span>
+            </li>
+            <li>
+              <strong data-i18n="m3_title">Commercial &amp; Asset Management</strong>
+              <span data-i18n="m3_desc">Advisory, leasing, and operational oversight focused on long-term yield.</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="about_title">About Metropolis Homes Real Estate</h2>
+          <p class="section-subtitle" data-i18n="about_sub">Connecting discerning buyers, sellers, and investors with verified opportunities across Egypt.</p>
+        </div>
+
+        <div class="about-narrative">
+          <div class="narrative-box">
+            <p data-i18n="about_p1">Metropolis Homes Real Estate operates in Egypt with a clear commitment to disciplined market guidance, responsive client communication, and value-driven property transactions.</p>
+            <p data-i18n="about_p2">Whether you are acquiring a primary residence, unlocking liquidity through resale, evaluating a commercial asset, or entrusting an investment to structured property management, our approach prioritizes clarity and measurable returns.</p>
+            <div class="motto-badges">
+              <span class="motto-pill" data-i18n="pill_1">Clear Communication</span>
+              <span class="motto-pill" data-i18n="pill_2">Verified Trust</span>
+              <span class="motto-pill" data-i18n="pill_3">High Returns</span>
+            </div>
+          </div>
+
+          <div class="vm-stack">
+            <div class="vm-card">
+              <span class="vm-tag" data-i18n="vision_tag">Our Vision</span>
+              <h3 data-i18n="vision_title">A Benchmark in Trusted Real Estate Advisory</h3>
+              <p data-i18n="vision_desc">To be a trusted real estate partner recognized across Egypt for integrity, market insight, and long-term capital preservation.</p>
+            </div>
+            <div class="vm-card gold-border">
+              <span class="vm-tag" data-i18n="mission_tag">Our Mission</span>
+              <h3 data-i18n="mission_title">Delivering Clarity &amp; Sustainable Value</h3>
+              <p data-i18n="mission_desc">To guide every client with honest valuations, timely follow-up, and tailored solutions that protect and grow real estate wealth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services-section" class="surface-band">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="services_title">Our Services</h2>
+          <p class="section-subtitle" data-i18n="services_sub">Comprehensive real estate solutions tailored to homeowners, investors, and business owners.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">01</span>
+              <h3 data-i18n="s1_title">Primary Market Advisory</h3>
+              <p data-i18n="s1_desc">Objective guidance across off-plan and newly launched residential and coastal projects, payment structures, and delivery timelines.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">02</span>
+              <h3 data-i18n="s2_title">Resale &amp; Acquisitions</h3>
+              <p data-i18n="s2_desc">Sourcing ready-to-move or prime resale units and positioning properties accurately for qualified buyers.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">03</span>
+              <h3 data-i18n="s3_title">Commercial Consultancy</h3>
+              <p data-i18n="s3_desc">Strategic evaluation of retail, administrative, and mixed-use spaces aligned with location demand and rental potential.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">04</span>
+              <h3 data-i18n="s4_title">Property Management</h3>
+              <p data-i18n="s4_desc">Structured oversight covering tenant coordination, maintenance follow-up, and asset upkeep so owners stay informed without daily friction.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">05</span>
+              <h3 data-i18n="s5_title">Market Valuation &amp; Positioning</h3>
+              <p data-i18n="s5_desc">Practical pricing and positioning insights grounded in current market comparables and buyer demand.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="service-body">
+              <span class="card-num">06</span>
+              <h3 data-i18n="s6_title">Investor Portfolio Support</h3>
+              <p data-i18n="s6_desc">Helping local and expatriate clients balance capital appreciation, liquidity, and rental yield across key Egyptian markets.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="why_title">Why Metropolis Homes</h2>
+          <p class="section-subtitle" data-i18n="why_sub">Principles that shape every consultation, negotiation, and client relationship.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="card-num">01</span>
+            <h3 data-i18n="w1_title">Direct &amp; Honest Communication</h3>
+            <p data-i18n="w1_desc">Clear answers, realistic expectations, and prompt updates at every stage of the transaction.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">02</span>
+            <h3 data-i18n="w2_title">Trust Built on Accountability</h3>
+            <p data-i18n="w2_desc">We treat your time and capital with care, focusing on fit-for-purpose options rather than pushy sales.</p>
+          </div>
+          <div class="card">
+            <span class="card-num">03</span>
+            <h3 data-i18n="w3_title">Focus on High Returns</h3>
+            <p data-i18n="w3_desc">Every recommendation weighs location fundamentals, resale liquidity, and long-term return on investment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-section" class="surface-band">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info-block">
+            <h2 data-i18n="contact_title">Connect With Metropolis Homes</h2>
+            <p data-i18n="contact_desc">Reach out directly for property inquiries, resale listings, commercial consultancy, or property management in Egypt.</p>
+
+            <div class="contact-details-grid">
+              <div class="contact-row">
+                <span class="contact-label" data-i18n="label_web">Website:</span>
+                <a href="https://metrophomes.com" class="ltr-num">metrophomes.com</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label" data-i18n="label_fb">Facebook:</span>
+                <a href="https://www.facebook.com/MetropolisHomeEG/" target="_blank" rel="noopener noreferrer" class="ltr-num">facebook.com/MetropolisHomeEG</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label" data-i18n="label_loc">Location:</span>
+                <span data-i18n="val_loc">Arab Republic of Egypt</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a href="https://www.facebook.com/MetropolisHomeEG/" target="_blank" rel="noopener noreferrer" class="btn btn-fb" data-i18n="btn_msg_fb">Message on Facebook</a>
+            <a href="#home-section" class="btn btn-accent" data-i18n="btn_top">Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <span data-i18n="footer_copy">&copy; 2026 Metropolis Homes Real Estate. All rights reserved.</span>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="#about-section" data-i18n="nav_about">About</a>
+          <a href="#services-section" data-i18n="nav_services">Services</a>
+          <a href="#contact-section" data-i18n="nav_contact">Contact</a>
+        </div>
+        <a href="https://www.facebook.com/MetropolisHomeEG/" target="_blank" rel="noopener noreferrer" class="footer-fb-link">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        brand_name: "Metropolis Homes",
+        brand_sub: "Real Estate · Egypt",
+        tagline: "Communication · Trust · High Returns",
+        nav_about: "About",
+        nav_services: "Services",
+        nav_why: "Why Us",
+        nav_contact: "Contact",
+        hero_eyebrow: "Metropolis Homes Real Estate · metrophomes.com",
+        hero_title: "Strategic Real Estate Advisory & High-Value Properties in Egypt",
+        hero_desc: "We specialize in primary developments, curated resale opportunities, commercial real estate consultancy, and end-to-end property management—built on transparent communication, lasting trust, and sustainable returns.",
+        cta_consult: "Request Consultation",
+        cta_fb: "Visit Facebook Page",
+        cta_services: "Explore Services",
+        panel_label: "Core Focus Across Egypt",
+        m1_title: "Residential & Luxury Resale",
+        m1_desc: "Prime villas, townhouses, apartments, and coastal homes in top compounds.",
+        m2_title: "Primary Market Developments",
+        m2_desc: "Direct access to leading developers, payment plans, and high-growth corridors.",
+        m3_title: "Commercial & Asset Management",
+        m3_desc: "Advisory, leasing, and operational oversight focused on long-term yield.",
+        about_title: "About Metropolis Homes Real Estate",
+        about_sub: "Connecting discerning buyers, sellers, and investors with verified opportunities across Egypt.",
+        about_p1: "Metropolis Homes Real Estate operates in Egypt with a clear commitment to disciplined market guidance, responsive client communication, and value-driven property transactions.",
+        about_p2: "Whether you are acquiring a primary residence, unlocking liquidity through resale, evaluating a commercial asset, or entrusting an investment to structured property management, our approach prioritizes clarity and measurable returns.",
+        pill_1: "Clear Communication",
+        pill_2: "Verified Trust",
+        pill_3: "High Returns",
+        vision_tag: "Our Vision",
+        vision_title: "A Benchmark in Trusted Real Estate Advisory",
+        vision_desc: "To be a trusted real estate partner recognized across Egypt for integrity, market insight, and long-term capital preservation.",
+        mission_tag: "Our Mission",
+        mission_title: "Delivering Clarity & Sustainable Value",
+        mission_desc: "To guide every client with honest valuations, timely follow-up, and tailored solutions that protect and grow real estate wealth.",
+        services_title: "Our Services",
+        services_sub: "Comprehensive real estate solutions tailored to homeowners, investors, and business owners.",
+        s1_title: "Primary Market Advisory",
+        s1_desc: "Objective guidance across off-plan and newly launched residential and coastal projects, payment structures, and delivery timelines.",
+        s2_title: "Resale & Acquisitions",
+        s2_desc: "Sourcing ready-to-move or prime resale units and positioning properties accurately for qualified buyers.",
+        s3_title: "Commercial Consultancy",
+        s3_desc: "Strategic evaluation of retail, administrative, and mixed-use spaces aligned with location demand and rental potential.",
+        s4_title: "Property Management",
+        s4_desc: "Structured oversight covering tenant coordination, maintenance follow-up, and asset upkeep so owners stay informed without daily friction.",
+        s5_title: "Market Valuation & Positioning",
+        s5_desc: "Practical pricing and positioning insights grounded in current market comparables and buyer demand.",
+        s6_title: "Investor Portfolio Support",
+        s6_desc: "Helping local and expatriate clients balance capital appreciation, liquidity, and rental yield across key Egyptian markets.",
+        why_title: "Why Metropolis Homes",
+        why_sub: "Principles that shape every consultation, negotiation, and client relationship.",
+        w1_title: "Direct & Honest Communication",
+        w1_desc: "Clear answers, realistic expectations, and prompt updates at every stage of the transaction.",
+        w2_title: "Trust Built on Accountability",
+        w2_desc: "We treat your time and capital with care, focusing on fit-for-purpose options rather than pushy sales.",
+        w3_title: "Focus on High Returns",
+        w3_desc: "Every recommendation weighs location fundamentals, resale liquidity, and long-term return on investment.",
+        contact_title: "Connect With Metropolis Homes",
+        contact_desc: "Reach out directly for property inquiries, resale listings, commercial consultancy, or property management in Egypt.",
+        label_web: "Website:",
+        label_fb: "Facebook:",
+        label_loc: "Location:",
+        val_loc: "Arab Republic of Egypt",
+        btn_msg_fb: "Message on Facebook",
+        btn_top: "Back to Top",
+        footer_copy: "© 2026 Metropolis Homes Real Estate. All rights reserved."
+      },
+      ar: {
+        brand_name: "متروبوليس هومز",
+        brand_sub: "للتسويق العقاري · مصر",
+        tagline: "تواصل · ثقة · عوائد مرتفعة",
+        nav_about: "عن الشركة",
+        nav_services: "خدماتنا",
+        nav_why: "لماذا نحن",
+        nav_contact: "تواصل معنا",
+        hero_eyebrow: "متروبوليس هومز للتطوير والتسويق العقاري · metrophomes.com",
+        hero_title: "استشارات عقارية مدروسة وفرص عالية القيمة في مصر",
+        hero_desc: "نتخصص في الطروحات الأولية، وفرص إعادة البيع المنتقاة، والاستشارات العقارية التجارية، وإدارة الأصول والممتلكات—وفق مبادئ التواصل الواضح والثقة والعوائد المستدامة.",
+        cta_consult: "اطلب استشارة عقارية",
+        cta_fb: "زيارة صفحة فيسبوك",
+        cta_services: "استعرض الخدمات",
+        panel_label: "محاور التركيز في السوق المصري",
+        m1_title: "السكن وإعادة البيع المميز",
+        m1_desc: "فيلات وتاون هاوس ووحدات سكنية وساحلية مختارة في أبرز المجتمعات العمرانية.",
+        m2_title: "المشروعات الأولية والمطورون",
+        m2_desc: "وصول مباشر لأبرز المطورين وخطط السداد والمناطق الواعدة للنمو العقاري.",
+        m3_title: "الاستشارات التجارية وإدارة الممتلكات",
+        m3_desc: "تقييم وتشغيل ومتابعة للأصول العقارية بهدف تعظيم العائد على المدى الطويل.",
+        about_title: "عن متروبوليس هومز العقارية",
+        about_sub: "نربط المشترين والبائعين والمستثمرين بفرص عقارية موثوقة ومدروسة في مصر.",
+        about_p1: "تعمل متروبوليس هومز العقارية في مصر بالتزام واضح بتقديم مشورة منضبطة، وتواصل سريع وشفاف، وصفقات عقارية مبنية على القيمة الحقيقية.",
+        about_p2: "سواء كنت تبحث عن سكن أساسي، أو سيولة عبر إعادة البيع، أو فرصة تجارية، أو إدارة منظمة لممتلكاتك، نضع الوضوح والعائد القابل للقياس في مقدمة الأولويات.",
+        pill_1: "تواصل واضح",
+        pill_2: "ثقة ومصداقية",
+        pill_3: "عوائد مرتفعة",
+        vision_tag: "رؤيتنا",
+        vision_title: "مرجع موثوق في الاستشارات العقارية",
+        vision_desc: "أن نكون شريكاً عقارياً موثوقاً في مصر يُعرف بالنزاهة، وقراءة السوق، والحفاظ على قيمة رأس المال.",
+        mission_tag: "رسالتنا",
+        mission_title: "تقديم الوضوح وقيمة مستدامة",
+        mission_desc: "مرافقة كل عميل بتقييمات واقعية، ومتابعة دقيقة، وحلول مناسبة تنمّي الثروة العقارية.",
+        services_title: "خدماتنا العقارية",
+        services_sub: "خدمات متكاملة مصممة لتناسب احتياجات العملاء والمستثمرين وأصحاب الأعمال.",
+        s1_title: "استشارات السوق الأولي",
+        s1_desc: "توجيه موضوعي لمشروعات السكن والساحل الجديدة وخطط السداد وجداول التسليم.",
+        s2_title: "إعادة البيع والاستحواذ",
+        s2_desc: "توفير وحدات جاهزة أو إعادة بيع مميزة وتسويق العقارات بدقة للعملاء الجادين.",
+        s3_title: "الاستشارات التجارية",
+        s3_desc: "دراسة الوحدات التجارية والإدارية ومتعددة الاستخدامات وفق قوة الموقع والطلب الإيجاري.",
+        s4_title: "إدارة الممتلكات",
+        s4_desc: "متابعة منظمة للتأجير والصيانة والحفاظ على حالة العقار براحة تامة للمالك.",
+        s5_title: "تقييم وتسعير السوق",
+        s5_desc: "قراءة عملية للأسعار والمزايا التنافسية بالاعتماد على واقع السوق والطلب الفعلي.",
+        s6_title: "دعم محافظ المستثمرين",
+        s6_desc: "مساعدة العملاء داخل مصر وخارجها على الموازنة بين نمو القيمة والسيولة والعائد.",
+        why_title: "لماذا متروبوليس هومز",
+        why_sub: "مبادئ تحكم كل استشارة وتفاوض وعلاقة عمل مع عملائنا.",
+        w1_title: "تواصل مباشر وصريح",
+        w1_desc: "إجابات واضحة، وتوقعات واقعية، وتحديثات مستمرة في كل خطوة.",
+        w2_title: "ثقة مبنية على المسؤولية",
+        w2_desc: "نتعامل مع وقتك واستثمارك بجدية ونرشح ما يناسب هدفك الفعلي دون ضغط.",
+        w3_title: "تركيز على العوائد المرتفعة",
+        w3_desc: "نراعي في كل ترشيح أساسيات الموقع، وقابلية إعادة البيع، والعائد طويل الأجل.",
+        contact_title: "تواصل مع متروبوليس هومز",
+        contact_desc: "تواصل معنا مباشرة للاستفسارات العقارية، وطلبات إعادة البيع، والاستشارات التجارية، وإدارة الممتلكات في مصر.",
+        label_web: "الموقع الإلكتروني:",
+        label_fb: "صفحة فيسبوك:",
+        label_loc: "المقر:",
+        val_loc: "جمهورية مصر العربية",
+        btn_msg_fb: "راسلنا على فيسبوك",
+        btn_top: "العودة للأعلى",
+        footer_copy: "© 2026 متروبوليس هومز للتسويق العقاري. جميع الحقوق محفوظة."
+      }
+    };
+
+    function setLang(lang) {
+      const isAr = lang === "ar";
+      document.documentElement.lang = isAr ? "ar" : "en";
+      document.body.dir = isAr ? "rtl" : "ltr";
+
+      document.getElementById("btn-en").classList.toggle("active", !isAr);
+      document.getElementById("btn-ar").classList.toggle("active", isAr);
+
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
